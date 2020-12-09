@@ -17,10 +17,10 @@ class Countdown(tk.Frame):
 
     def create_widgets(self):
 
-        self.label = tk.Label(self, text="00:00:00")
+        self.label = tk.Label(self, text="0:00:00", font=("Courier 50 bold"), fg="blue")
         self.entry = tk.Entry(self, justify="center")
         self.entry.focus_set()
-        self.start = tk.Button(self, text="Start", command=self.start_button)
+        self.start = tk.Button(self, text="Start", fg="lime", bg="black", command=self.start_button, font=("Courier 13 bold"))
     
     def countdown(self):
         self.label["text"] = self.convert_seconds_left_to_time()
@@ -47,10 +47,10 @@ class Countdown(tk.Frame):
 
 if __name__ == "__main__":
     root = tk.Tk()
-    root.geometry("600x500")
+    root.title("Countdown")
+    root.geometry("400x250")
     root.resizable(False, False)
-
+    root.configure(bg="silver")
     countdown = Countdown(root)
     countdown.pack()
-
     root.mainloop()
