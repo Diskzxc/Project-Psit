@@ -32,6 +32,7 @@ class App():
                 if(m<59):
                     m+=1
                 elif(m==59):
+                    m=0
                     h+=1
             if(h<10):
                 h = str(0)+str(h)
