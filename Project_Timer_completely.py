@@ -6,9 +6,9 @@ import datetime
 
 def timer():
     main_desktop = tk.Tk()
-    main_desktop.title("Main Desktop")
+    main_desktop.title("Timer")
     main_desktop.geometry("600x500")
-    main_desktop.configure(bg = "silver")
+    main_desktop.configure(bg = "Antiquewhite")
 
     def timer_counter():
         global count
@@ -71,9 +71,9 @@ def timer():
                 self.root.title("Timer Counter")
                 self.root.geometry("600x500")
                 self.root.resizable(False, False)
-                self.lb = Label(self.root, text = "00:00:00", fg = "white", bg = "gray")
+                self.lb = Label(self.root, text = "00:00:00", fg = "white", bg = "lightcoral")
                 self.lb.config(font = ("Courier 50 bold"))
-                self.root.configure(bg = "silver")
+                self.root.configure(bg = "coral")
                 self.bt1 = Button(self.root, text = "Start", fg = "lime", bg = "black", command = self.start, font = ("Courier 13 bold"))
                 self.bt2 = Button(self.root, text = "Stop", fg = "red", bg = "black", command = self.stop, font = ("Courier 13 bold"))
                 self.bt3 = Button(self.root, text = "Reset", fg = "yellow", bg = "black", command = self.reset, font = ("Courier 13 bold"))
@@ -100,7 +100,7 @@ def timer():
 
             def create_widgets(self):
                 self.label = tk.Label(self, text="0:00:00", font = ("Courier 40 bold"), fg = "blue")
-                self.entry = tk.Entry(self, justify = "center")
+                self.entry = tk.Entry(self, justify = "center",)
                 self.entry.focus_set()
                 self.start = tk.Button(self, text = "Start", fg = "lime", bg = "black", command = self.start_button, font = ("Courier 13 bold"))
             
@@ -130,7 +130,7 @@ def timer():
             root.title("Timer Countdown")
             root.geometry("650x350")
             root.resizable(False, False)
-            root.configure(bg = "silver")
+            root.configure(bg = "paleturquoise")
             countdown = Countdown(root)
             countdown.pack()
             root.mainloop()
