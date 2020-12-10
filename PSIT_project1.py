@@ -1,30 +1,37 @@
+""" Timer """
 import time
 from tkinter import *
 import tkinter as tk
 import datetime
+
 def timer():
     main_desktop = tk.Tk()
     main_desktop.title("Main Desktop")
     main_desktop.geometry("600x500")
-    main_desktop.configure(bg="silver")
+    main_desktop.configure(bg = "silver")
+
     def timer_counter():
         global count
         count = 0
         class App():
             def reset(self):
                 global count
-                count=1
+                count = 1
                 self.lb["text"] = "00:00:00"
+
             def start(self):
                 global count
                 count = 0
                 self.start_timer()
+
             def start_timer(self):
                 global count
                 self.timer()
+
             def stop(self):
                 global count
                 count = 1
+
             def timer(self):
                 global count
                 if count == 0:
@@ -34,7 +41,7 @@ def timer():
                     m = int(m)
                     s = int(s)
                     if s < 59:
-                        s+=1
+                        s += 1
                     elif s == 59:
                         s = 0
                         if m < 59:
@@ -46,18 +53,19 @@ def timer():
                         h = str(0)+str(h)
                     else:
                         h = str(h)
-                    if(m<10):
+                    if m < 10:
                         m = str(0)+str(m)
                     else:
                         m = str(m)
-                    if(s<10):
+                    if s < 10:
                         s = str(0)+str(s)
                     else:
                         s = str(s)
                     self.d = h+":"+m+":"+s
                     self.lb["text"] = self.d
-                    if(count==0):
+                    if count == 0:
                         self.root.after(930, self.start_timer)
+
             def __init__(self):
                 self.root=Tk()
                 self.root.title("Timer Counter")
@@ -73,7 +81,7 @@ def timer():
                 self.bt1.place(x = 140, y=260)
                 self.bt2.place(x = 265, y=260)
                 self.bt3.place(x = 380, y=260)
-                
+
         App()
 
     def timer_countdown():
@@ -86,13 +94,11 @@ def timer():
                 self._timer_on = False
 
             def show_widgets(self):
-
                 self.label.pack()
                 self.entry.pack()
                 self.start.pack()
 
             def create_widgets(self):
-
                 self.label = tk.Label(self, text="0:00:00", font = ("Courier 40 bold"), fg = "blue")
                 self.entry = tk.Entry(self, justify = "center")
                 self.entry.focus_set()
@@ -100,7 +106,6 @@ def timer():
             
             def countdown(self):
                 self.label["text"] = self.convert_seconds_left_to_time()
-
                 if self.seconds_left:
                     self.seconds_left -= 1
                     self._timer_on = self.after(1000, self.countdown)
@@ -118,7 +123,6 @@ def timer():
                     self._timer_on = False
 
             def convert_seconds_left_to_time(self):
-
                 return datetime.timedelta(seconds = self.seconds_left)
 
         if __name__ == "__main__":
@@ -131,8 +135,8 @@ def timer():
             countdown.pack()
             root.mainloop()
 
-    func_btn1 = tk.Button(main_desktop, text="Time Counter", command=timer_counter, bg="black", fg="orange", font=("Courier 17 bold"))
-    func_btn2 = tk.Button(main_desktop, text="Time Countdown", command=timer_countdown,  bg="black", fg="cyan", font=("Courier 17 bold"))
+    func_btn1 = tk.Button(main_desktop, text = "Time Counter", command = timer_counter, bg = "black", fg = "orange", font = ("Courier 17 bold"))
+    func_btn2 = tk.Button(main_desktop, text = "Time Countdown", command = timer_countdown,  bg = "black", fg = "cyan", font = ("Courier 17 bold"))
     func_btn1.pack()
     func_btn2.pack()
     func_btn1.place(x=200, y=140)
