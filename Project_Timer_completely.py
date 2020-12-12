@@ -8,7 +8,7 @@ def timer():
     main_desktop = tk.Tk()
     main_desktop.title("Timer")
     main_desktop.geometry("600x500")
-    main_desktop.configure(bg = "pink")
+    main_desktop.configure(bg = "Antiquewhite")
 
     def timer_counter():
         global count
