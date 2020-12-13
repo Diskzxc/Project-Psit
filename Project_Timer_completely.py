@@ -4,35 +4,35 @@ from tkinter import *
 import tkinter as tk
 import datetime
 
-def timer():
+def timer(): # หน้าหลักสำหรับเลือก 2 ฟังก์ชัน
     main_desktop = tk.Tk()
     main_desktop.title("Timer")
     main_desktop.geometry("600x500")
     main_desktop.configure(bg = "Antiquewhite")
 
-    def timer_counter():
+    def timer_counter(): # ฟังก์ชันในการนับเวลา
         global count
         count = 0
         class App():
-            def reset(self):
+            def reset(self): # ฟังก์ชันสำหรับresetเวลาให้กลับมาที่จุดเริ่มต้น
                 global count
                 count = 1
                 self.lb["text"] = "00:00:00"
 
-            def start(self):
+            def start(self): # ฟังก์ชันใช้ในการนับเวลา
                 global count
                 count = 0
                 self.start_timer()
 
-            def start_timer(self):
+            def start_timer(self): # ฟังก์ชันสำหรับกด start แล้วจะเริ่มทำงาน
                 global count
                 self.timer()
 
-            def stop(self):
+            def stop(self): # ฟังก์ชันสำหรับหยุดเวลา
                 global count
                 count = 1
 
-            def timer(self):
+            def timer(self): # ฟังก์ชันแสดงเวลาตามเงื่อนไงในการนับเวลา
                 global count
                 if count == 0:
                     self.d = str(self.lb["text"])
@@ -66,7 +66,7 @@ def timer():
                     if count == 0:
                         self.root.after(930, self.start_timer)
 
-            def __init__(self):
+            def __init__(self): # สำหรับตกแต่งหน้าต่างที่แสดง
                 self.root=Tk()
                 self.root.title("Timer Counter")
                 self.root.geometry("600x500")
@@ -84,27 +84,27 @@ def timer():
 
         App()
 
-    def timer_countdown():
+    def timer_countdown(): # ฟังก์ชันสำหรับนับถอยหลัง
         class Countdown(tk.Frame):
-            def __init__(self, master):
+            def __init__(self, master): # ฟังก์ชันที่เรียกใช้งานฟังก์ชันทั้งหมดที่ใช้ในการแสดงบนหน้าต่าง
                 super().__init__(master)
                 self.create_widgets()
                 self.show_widgets()
                 self.seconds_left = 0
                 self._timer_on = False
 
-            def show_widgets(self):
+            def show_widgets(self): # ฟังก์ชันสำหรับแสดงหน้าต่าง widget
                 self.label.pack()
                 self.entry.pack()
                 self.start.pack()
 
-            def create_widgets(self):
+            def create_widgets(self): # ฟังกืชันในการแสดงผลของเวลา ช่องสำหรับใส่เวลา และ ปุ่มstart
                 self.label = tk.Label(self, text="0:00:00", font = ("Courier 40 bold"), fg = "blue")
                 self.entry = tk.Entry(self, justify = "center",)
                 self.entry.focus_set()
                 self.start = tk.Button(self, text = "Start", fg = "lime", bg = "black", command = self.start_button, font = ("Courier 13 bold"))
             
-            def countdown(self):
+            def countdown(self): # ฟังก์ชันเงื่อนไขในการนับถอยหลัง
                 self.label["text"] = self.convert_seconds_left_to_time()
                 if self.seconds_left:
                     self.seconds_left -= 1
@@ -112,20 +112,20 @@ def timer():
                 else:
                     self._timer_on = False
 
-            def start_button(self):
+            def start_button(self): # ฟังก์ชันที่ทำให้ปุ่มstartทำงาน
                 self.seconds_left = int(self.entry.get())
                 self.stop_timer()
                 self.countdown()
 
-            def stop_timer(self):
+            def stop_timer(self): # ฟังก์ชันสำหรับหยุดการนับอยหลัง
                 if self._timer_on:
                     self.after_cancel(self._timer_on)
                     self._timer_on = False
 
-            def convert_seconds_left_to_time(self):
+            def convert_seconds_left_to_time(self): # ฟังก์สำหรับคืนค่าเวลาที่เหลืออยู่
                 return datetime.timedelta(seconds = self.seconds_left)
 
-        if __name__ == "__main__":
+        if __name__ == "__main__": # สำหรับตกแต่งหน้าต่าง
             root = tk.Tk()
             root.title("Timer Countdown")
             root.geometry("650x350")
